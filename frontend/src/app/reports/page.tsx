@@ -1,3 +1,5 @@
+"use client";
+
 import { useFinance } from "@/context/FinanceContext";
 import { FileText, Download, Share2, Calendar, Layout, BarChart3, Loader2 } from "lucide-react";
 import Link from "next/link";
