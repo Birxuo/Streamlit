@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import Papa from "papaparse";
 import { Upload, FileText, Activity, Sparkles, TrendingUp, TrendingDown } from "lucide-react";
 import { categorizeTransactions, findGaps, computeMonthlyTrends, detectOutliers, Transaction } from "@/lib/finance-utils";
@@ -17,6 +17,15 @@ export default function Home() {
   const [dragging, setDragging] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [exporting, setExporting] = useState(false);
+  const [initialLoaded, setInitialLoaded] = useState(false);
+
+  // Auto-load demo data on mount if empty
+  useEffect(() => {
+    if (!data && !loading && !initialLoaded) {
+      loadSampleData();
+      setInitialLoaded(true);
+    }
+  }, [data, loading, initialLoaded]);
 
   const handleExport = async () => {
     setExporting(true);
