@@ -87,14 +87,14 @@ export function TopBar({ onReset, onExport, exporting }: { onReset?: () => void,
       <div className="flex items-center gap-6">
         <div className="flex items-center gap-4">
           {onExport && (
-             <button
-                onClick={onExport}
-                disabled={exporting}
-                className="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 disabled:opacity-50 text-slate-950 text-xs font-black px-4 py-2 rounded-xl transition-all shadow-lg shadow-emerald-500/20"
-             >
-                {exporting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Download size={14} />}
-                {exporting ? "Generating..." : "Export"}
-             </button>
+            <button
+              onClick={onExport}
+              disabled={exporting}
+              className="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 disabled:opacity-50 text-slate-950 text-xs font-black px-4 py-2 rounded-xl transition-all shadow-lg shadow-emerald-500/20"
+            >
+              {exporting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Download size={14} />}
+              {exporting ? "Generating..." : "Export"}
+            </button>
           )}
           {onReset && (
             <button
@@ -111,10 +111,10 @@ export function TopBar({ onReset, onExport, exporting }: { onReset?: () => void,
         </div>
         <div className="flex items-center gap-3 pl-4 border-l border-slate-800">
           <div className="text-right hidden sm:block">
-            <p className="text-sm font-bold text-white">Sarah Jones</p>
+            <p className="text-sm font-bold text-white">USER</p>
             <p className="text-[10px] font-medium text-emerald-500 uppercase tracking-wider">Premium Member</p>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-400 p-[2px]">
+          <div className="w-10 h-10 rounded-xl bg-emerald-500 p-[2px]">
             <div className="w-full h-full rounded-[9px] bg-slate-950 flex items-center justify-center overflow-hidden">
               <Image src="https://i.pravatar.cc/100?u=sarah" alt="avatar" width={40} height={40} />
             </div>

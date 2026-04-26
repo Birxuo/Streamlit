@@ -39,11 +39,10 @@ export default function SettingsPage() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-sm transition-all ${
-                  activeTab === tab.id 
-                    ? "bg-emerald-500 text-slate-950 shadow-lg shadow-emerald-500/20" 
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-sm transition-all ${activeTab === tab.id
+                    ? "bg-emerald-500 text-slate-950 shadow-lg shadow-emerald-500/20"
                     : "text-slate-400 hover:bg-slate-900 hover:text-white"
-                }`}
+                  }`}
               >
                 <Icon size={18} />
                 {tab.name}
@@ -58,7 +57,7 @@ export default function SettingsPage() {
               <div className="space-y-8 animate-in fade-in slide-in-from-right-4 duration-300">
                 <div className="flex items-center gap-6">
                   <div className="relative group">
-                    <div className="w-24 h-24 rounded-3xl bg-gradient-to-tr from-emerald-500 to-teal-400 p-[3px]">
+                    <div className="w-24 h-24 rounded-3xl bg-emerald-500 p-[3px]">
                       <div className="w-full h-full rounded-[21px] bg-slate-950 flex items-center justify-center overflow-hidden">
                         <Image src="https://i.pravatar.cc/100?u=sarah" alt="avatar" width={100} height={100} />
                       </div>
@@ -68,7 +67,7 @@ export default function SettingsPage() {
                     </button>
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white">Sarah Jones</h3>
+                    <h3 className="text-xl font-bold text-white">USER</h3>
                     <p className="text-sm text-slate-500">sarah.jones@institutional.com</p>
                     <span className="inline-block mt-2 px-2 py-0.5 bg-emerald-500/10 border border-emerald-500/20 rounded text-[10px] font-black text-emerald-500 uppercase tracking-widest">
                       Premium Member
@@ -133,7 +132,7 @@ export default function SettingsPage() {
                   <p className="text-sm text-slate-400 mb-6 leading-relaxed">
                     All financial models, uploaded statements, and AI insights are stored locally in your browser. Clearing this data will permanently remove all strategic analysis.
                   </p>
-                  <button 
+                  <button
                     onClick={clearData}
                     className="bg-red-500 hover:bg-red-400 text-slate-950 font-bold py-3 px-6 rounded-xl text-sm transition-all shadow-lg shadow-red-500/20"
                   >
@@ -144,10 +143,10 @@ export default function SettingsPage() {
             )}
 
             <div className="mt-12 pt-8 border-t border-slate-800 flex justify-end gap-4">
-               <button className="text-sm font-bold text-slate-500 hover:text-white transition-colors">Discard Changes</button>
-               <button className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black py-3 px-8 rounded-xl text-sm transition-all">
-                 Save Settings
-               </button>
+              <button className="text-sm font-bold text-slate-500 hover:text-white transition-colors">Discard Changes</button>
+              <button className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black py-3 px-8 rounded-xl text-sm transition-all">
+                Save Settings
+              </button>
             </div>
           </div>
         </div>

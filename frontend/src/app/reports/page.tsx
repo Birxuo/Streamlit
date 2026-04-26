@@ -153,7 +153,7 @@ export default function ReportsPage() {
               </div>
            </div>
 
-           <div className="glass-card p-8 bg-gradient-to-br from-indigo-500/10 to-emerald-500/10 border-indigo-500/20">
+           <div className="glass-card p-8 bg-indigo-500/5 border-indigo-500/20">
               <h4 className="font-bold text-white mb-2">Premium Insights</h4>
               <p className="text-xs text-slate-400 leading-relaxed mb-4">
                 Upgrade to Enterprise for white-label reports, multi-user accounts, and deep tax-harvesting strategies.

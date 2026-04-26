@@ -31,7 +31,7 @@ export function InsightCard({ insight }: { insight: Insight }) {
             <div className="space-y-4">
                 <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
                     <div 
-                        className={`h-full rounded-full transition-all duration-1000 ${isHigh ? 'bg-gradient-to-r from-red-500 to-orange-500' : 'bg-gradient-to-r from-emerald-500 to-teal-500'}`} 
+                        className={`h-full rounded-full transition-all duration-1000 ${isHigh ? 'bg-red-500' : 'bg-emerald-500'}`} 
                         style={{ width: isHigh ? '85%' : '60%' }} 
                     />
                 </div>

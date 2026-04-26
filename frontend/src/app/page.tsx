@@ -169,7 +169,7 @@ export default function Home() {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <label className="relative cursor-pointer group">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-emerald-600 to-teal-500 rounded-[1.5rem] blur opacity-25 group-hover:opacity-50 transition duration-500"></div>
+                  <div className="absolute -inset-1 bg-emerald-600 rounded-[1.5rem] blur opacity-25 group-hover:opacity-50 transition duration-500"></div>
                   <div className="relative bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold flex items-center justify-center gap-3 py-5 px-10 rounded-2xl transition-all h-full">
                     <Upload className="w-5 h-5" />
                     <span>Upload CSV Statement</span>
