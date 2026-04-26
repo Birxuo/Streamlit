@@ -27,13 +27,13 @@ const CustomTooltip = ({ active, payload, label }: CustomTooltipProps) => {
     return null;
 };
 
-const renderCustomLegend = (props: { payload?: readonly { color: string; value: string }[] }) => {
+const renderCustomLegend = (props: { payload?: readonly { color?: string; value?: string | number }[] }) => {
     const { payload } = props;
     return (
         <div className="flex flex-wrap gap-x-6 gap-y-2 justify-center mt-6">
             {payload?.map((entry, index) => (
                 <div key={index} className="flex items-center gap-2 text-[10px] text-slate-400 font-bold uppercase tracking-wider">
-                    <div className="w-2.5 h-2.5 rounded-full shrink-0 shadow-sm" style={{ backgroundColor: entry.color }} />
+                    <div className="w-2.5 h-2.5 rounded-full shrink-0 shadow-sm" style={{ backgroundColor: entry.color || '#ccc' }} />
                     <span>{entry.value}</span>
                 </div>
             ))}
