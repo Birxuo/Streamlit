@@ -13,9 +13,9 @@ from insights import generate_insights
 # Load environment variables
 load_dotenv()
 
-st.set_page_config(page_title="Gap Finder Intelligence Terminal", layout="wide", page_icon="💸")
+st.set_page_config(page_title="Streamlit Intelligence Terminal", layout="wide", page_icon="💸")
 
-st.title("💸 Gap Finder — Intelligence Terminal")
+st.title("💸 Streamlit — Intelligence Terminal")
 st.caption("Upload a bank statement to uncover hidden financial leaks with AI-powered analysis.")
 
 # Sidebar - Controls
@@ -135,7 +135,7 @@ if data is not None:
         st.dataframe(display_df, use_container_width=True, hide_index=True)
         st.markdown("---")
 
-    # ── Gap Finder & AI Insights ───────────────────────────────────────
+    # ── Streamlit & AI Insights ───────────────────────────────────────
     st.subheader("Financial Gaps & AI Insights")
 
     if not gaps:

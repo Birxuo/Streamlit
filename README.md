@@ -1,11 +1,11 @@
-# 💸 Personal Finance Gap Finder
+# 💸 Personal Finance Streamlit
 
 [![Next.js 16](https://img.shields.io/badge/Next.js-16.2-black?logo=next.js)](https://nextjs.org/)
 [![Tailwind CSS v4](https://img.shields.io/badge/Tailwind-v4-38B2AC?logo=tailwind-css)](https://tailwindcss.com/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.32-FF4B4B?logo=streamlit)](https://streamlit.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-An elite, multi-interface financial intelligence platform designed to uncover "leaks" in your personal economy. Whether you prefer the **Modern Flagship Dashboard (Next.js)** or the **Original Intelligence Terminal (Streamlit)**, Gap Finder uses advanced heuristics and AI to transform messy bank statements into actionable savings.
+An elite, multi-interface financial intelligence platform designed to uncover "leaks" in your personal economy. Whether you prefer the **Modern Flagship Dashboard (Next.js)** or the **Original Intelligence Terminal (Streamlit)**, Streamlit uses advanced heuristics and AI to transform messy bank statements into actionable savings.
 
 ![Dashboard Mockup](assets/mockup_dashboard.png)
 
@@ -16,14 +16,14 @@ An elite, multi-interface financial intelligence platform designed to uncover "l
 This project is submitted as a functional prototype for [Event/Competition Name]. It addresses the problem of financial opacity and privacy in personal budgeting.
 
 - **[Project Overview](OVERVIEW.md)**: Detailed breakdown of the problem, solution, and impact.
-- **[Presentation Script](PRESENTATION.md)**: A structured pitch for the Gap Finder platform.
+- **[Presentation Script](PRESENTATION.md)**: A structured pitch for the Streamlit platform.
 - **Prototype**: Fully functional Next.js and Streamlit interfaces (see [Getting Started](#-getting-started)).
 
 ---
 
 ## 🏗️ The Architecture
 
-Gap Finder is built on a **Privacy-First, Local-First** philosophy. Your financial data stays in your browser (Next.js) or on your local machine (Streamlit).
+Streamlit is built on a **Privacy-First, Local-First** philosophy. Your financial data stays in your browser (Next.js) or on your local machine (Streamlit).
 
 ### 1. Flagship Dashboard (Next.js)
 The premium web experience designed for speed, aesthetics, and institutional-grade visualization.

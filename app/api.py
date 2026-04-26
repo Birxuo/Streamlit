@@ -1,5 +1,5 @@
 """
-Gap Finder — FastAPI Intelligence Engine
+Streamlit — FastAPI Intelligence Engine
 
 Provides REST endpoints for the Next.js frontend and any external consumers.
 Run with: uvicorn app.api:app --reload --port 8000
@@ -30,7 +30,7 @@ from insights import generate_insights
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), "..", ".env"))
 
 app = FastAPI(
-    title="Gap Finder Intelligence Engine",
+    title="Streamlit Intelligence Engine",
     description="AI-powered financial analysis API",
     version="2.0.0",
 )
@@ -70,7 +70,7 @@ class AnalysisResponse(BaseModel):
 @app.get("/")
 async def root():
     return {
-        "service": "Gap Finder Intelligence Engine",
+        "service": "Streamlit Intelligence Engine",
         "version": "2.0.0",
         "status": "operational",
     }

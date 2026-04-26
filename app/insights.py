@@ -77,7 +77,7 @@ Be direct, analytical, and professional. No fluff.
             ],
             extra_headers={
                 "HTTP-Referer": "https://gapfinder.ai",
-                "X-Title": "Gap Finder Intelligence Engine",
+                "X-Title": "Streamlit Intelligence Engine",
             }
         )
         
