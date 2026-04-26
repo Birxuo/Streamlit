@@ -139,7 +139,12 @@ export default function ReportsPage() {
               <h4 className="font-bold text-white mb-6">Report Archive</h4>
               <div className="space-y-4">
                 {[1, 2, 3].map((i) => (
-                  <div key={i} className="flex items-center justify-between p-4 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-slate-700 transition-all cursor-pointer group">
+                  <a 
+                    key={i} 
+                    href={`/Monthly_Audit_0${i}.pdf`} 
+                    download={`Monthly_Audit_0${i}.pdf`}
+                    className="flex items-center justify-between p-4 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-emerald-500/30 hover:bg-slate-900 transition-all cursor-pointer group"
+                  >
                     <div className="flex items-center gap-3">
                       <FileText size={18} className="text-slate-500 group-hover:text-emerald-500" />
                       <div>
@@ -148,7 +153,7 @@ export default function ReportsPage() {
                       </div>
                     </div>
                     <Download size={14} className="text-slate-700 group-hover:text-white" />
-                  </div>
+                  </a>
                 ))}
               </div>
            </div>
