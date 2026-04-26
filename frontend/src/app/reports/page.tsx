@@ -136,6 +136,36 @@ export default function ReportsPage() {
 
         <div className="space-y-8">
            <div className="glass-card p-8">
+              <h4 className="font-bold text-white mb-6 flex items-center gap-2">
+                <Calendar className="w-4 h-4 text-indigo-500" />
+                Monthly Breakdown
+              </h4>
+              <div className="space-y-4 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
+                {Object.entries(
+                  data.allTransactions.reduce((acc: Record<string, {income: number, expenses: number}>, tx) => {
+                    const d = new Date(tx.date);
+                    const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
+                    if (!acc[key]) acc[key] = { income: 0, expenses: 0 };
+                    if (tx.amount > 0) acc[key].income += tx.amount;
+                    else acc[key].expenses += Math.abs(tx.amount);
+                    return acc;
+                  }, {})
+                ).sort((a, b) => b[0].localeCompare(a[0])).map(([month, vals]) => (
+                  <div key={month} className="p-4 bg-slate-900/50 rounded-xl border border-slate-800 flex justify-between items-center">
+                    <div>
+                      <p className="text-xs font-bold text-white">{month}</p>
+                      <p className="text-[10px] text-slate-500 uppercase tracking-widest mt-1">Audit Period</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-sm font-black text-emerald-500">+${vals.income.toLocaleString()}</p>
+                      <p className="text-xs font-bold text-red-400">-${vals.expenses.toLocaleString()}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+           </div>
+
+           <div className="glass-card p-8">
               <h4 className="font-bold text-white mb-6">Report Archive</h4>
               <div className="space-y-4">
                 {[1, 2, 3].map((i) => (
