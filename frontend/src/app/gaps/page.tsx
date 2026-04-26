@@ -1,6 +1,6 @@
 "use client";
 
-import { useFinance } from "@/context/FinanceContext";
+import { useFinance, Insight } from "@/context/FinanceContext";
 import { ShieldAlert, AlertTriangle, CheckCircle2, Sparkles, Zap } from "lucide-react";
 import Link from "next/link";
 import { InsightCard } from "@/components/InsightCard";
@@ -86,7 +86,7 @@ export default function GapsPage() {
             Strategic Optimizations
           </h3>
           <div className="space-y-4">
-            {insights?.map((insight: Record<string, string | number>, idx: number) => (
+            {insights?.map((insight: Insight, idx: number) => (
               <InsightCard key={idx} insight={insight} />
             ))}
           </div>

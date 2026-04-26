@@ -56,8 +56,9 @@ Ensure the 'recommendation' is a deep analysis, not a generic tip.
             messages: [
                 { role: "system", content: systemPrompt },
                 { role: "user", content: userPrompt }
-            ],
-            extra_headers: {
+            ]
+        }, {
+            headers: {
                 "HTTP-Referer": "https://gapfinder.ai",
                 "X-Title": "Streamlit Intelligence Engine",
             }

@@ -1,7 +1,7 @@
 import { AlertCircle, ArrowRight, Zap } from "lucide-react";
-import { FlaggedCategory } from "@/lib/finance-utils";
+import { Insight } from "@/context/FinanceContext";
 
-export function InsightCard({ insight }: { insight: FlaggedCategory & { insight: string } }) {
+export function InsightCard({ insight }: { insight: Insight }) {
     const isHigh = insight.severity === "high" || insight.severity === "critical";
     
     return (
@@ -17,15 +17,15 @@ export function InsightCard({ insight }: { insight: FlaggedCategory & { insight:
                     </div>
                 </div>
                 <div className="text-right">
-                    <p className="text-xs font-bold text-slate-400">Deficit</p>
+                    <p className="text-xs font-bold text-slate-400">Potential Savings</p>
                     <p className={`text-sm font-black ${isHigh ? 'text-red-400' : 'text-emerald-400'}`}>
-                        ${insight.overspend_amount?.toLocaleString() || "0"}
+                        ${Number(insight.annual_savings).toLocaleString()}
                     </p>
                 </div>
             </div>
 
             <p className="text-xs text-slate-400 leading-relaxed mb-6 line-clamp-2 italic">
-                &quot;{insight.insight}&quot;
+                &quot;{insight.recommendation}&quot;
             </p>
 
             <div className="space-y-4">

@@ -8,7 +8,7 @@ import { SpendingPieChart, TopTransactionsChart } from "@/components/Charts";
 import { InsightCard } from "@/components/InsightCard";
 import { SavingsSimulator } from "@/components/SavingsSimulator";
 import { MonthlyTrend } from "@/components/MonthlyTrend";
-import { useFinance } from "@/context/FinanceContext";
+import { useFinance, Insight } from "@/context/FinanceContext";
 import { exportToPDF } from "@/lib/pdf-exporter";
 import { Loader2, Download } from "lucide-react";
 
@@ -298,7 +298,7 @@ export default function Home() {
                   </div>
                 ) : (
                   <div className="space-y-4">
-                    {insights.map((insight, idx) => (
+                    {insights.map((insight: Insight, idx: number) => (
                        <InsightCard key={idx} insight={insight} />
                     ))}
                   </div>

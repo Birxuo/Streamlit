@@ -1,8 +1,7 @@
 "use client";
 
 import { useFinance } from "@/context/FinanceContext";
-import { Settings, User, Bell, Shield, Database, Save, Trash2, Globe } from "lucide-react";
-import Link from "next/link";
+import { User, Bell, Shield, Database, Save, Trash2, Globe } from "lucide-react";
 import { useState } from "react";
 import Image from "next/image";
 

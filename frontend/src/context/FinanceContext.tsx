@@ -13,11 +13,19 @@ export interface FinanceData {
   allTransactions: Transaction[];
 }
 
+export interface Insight {
+  category: string;
+  overspend: string | number;
+  recommendation: string;
+  annual_savings: string | number;
+  severity?: "low" | "medium" | "high" | "critical";
+}
+
 interface FinanceContextType {
   data: FinanceData | null;
   setData: (data: FinanceData | null) => void;
-  insights: Record<string, string | number>[] | null;
-  setInsights: (insights: Record<string, string | number>[] | null) => void;
+  insights: Insight[] | null;
+  setInsights: (insights: Insight[] | null) => void;
   loading: boolean;
   setLoading: (loading: boolean) => void;
 }
@@ -26,7 +34,7 @@ const FinanceContext = createContext<FinanceContextType | undefined>(undefined);
 
 export function FinanceProvider({ children }: { children: ReactNode }) {
   const [data, setData] = useState<FinanceData | null>(null);
-  const [insights, setInsights] = useState<Record<string, string | number>[] | null>(null);
+  const [insights, setInsights] = useState<Insight[] | null>(null);
   const [loading, setLoading] = useState(false);
 
   return (

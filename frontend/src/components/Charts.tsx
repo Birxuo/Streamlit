@@ -27,7 +27,7 @@ const CustomTooltip = ({ active, payload, label }: CustomTooltipProps) => {
     return null;
 };
 
-const renderCustomLegend = (props: { payload?: { color: string; value: string }[] }) => {
+const renderCustomLegend = (props: { payload?: readonly { color: string; value: string }[] }) => {
     const { payload } = props;
     return (
         <div className="flex flex-wrap gap-x-6 gap-y-2 justify-center mt-6">
