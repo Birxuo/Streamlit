@@ -1,14 +1,22 @@
-"use client";
-
 import { useFinance } from "@/context/FinanceContext";
-import { FileText, Download, Share2, Calendar, Layout, BarChart3 } from "lucide-react";
+import { FileText, Download, Share2, Calendar, Layout, BarChart3, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { MonthlyTrend } from "@/components/MonthlyTrend";
+import { exportToPDF } from "@/lib/pdf-exporter";
+import { useState } from "react";
 
 export default function ReportsPage() {
   const { data } = useFinance();
+  const [exporting, setExporting] = useState(false);
+
+  const handleExport = async () => {
+    setExporting(true);
+    await exportToPDF("report-content", "Financial_Audit_Report.pdf");
+    setExporting(false);
+  };
 
   if (!data) {
+    // ... (rest of the check)
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
         <div className="bg-slate-900 p-6 rounded-3xl mb-6">
@@ -26,7 +34,7 @@ export default function ReportsPage() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto animate-slide-up">
+    <div id="report-content" className="max-w-7xl mx-auto animate-slide-up p-4">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6">
         <div>
           <h1 className="text-4xl font-black text-white tracking-tight mb-2">Reports</h1>
@@ -37,8 +45,13 @@ export default function ReportsPage() {
           <button className="bg-slate-900 border border-slate-800 text-white font-bold py-3 px-6 rounded-xl flex items-center gap-2 hover:bg-slate-800 transition-all">
             <Share2 size={18} /> Share
           </button>
-          <button className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-3 px-6 rounded-xl flex items-center gap-2 transition-all">
-            <Download size={18} /> Export PDF
+          <button 
+            onClick={handleExport}
+            disabled={exporting}
+            className="bg-emerald-500 hover:bg-emerald-400 disabled:opacity-50 disabled:cursor-not-allowed text-slate-950 font-bold py-3 px-6 rounded-xl flex items-center gap-2 transition-all shadow-lg shadow-emerald-500/20"
+          >
+            {exporting ? <Loader2 className="w-5 h-5 animate-spin" /> : <Download size={18} />}
+            {exporting ? "Generating..." : "Export PDF"}
           </button>
         </div>
       </div>

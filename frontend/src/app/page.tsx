@@ -9,11 +9,20 @@ import { InsightCard } from "@/components/InsightCard";
 import { SavingsSimulator } from "@/components/SavingsSimulator";
 import { MonthlyTrend } from "@/components/MonthlyTrend";
 import { useFinance } from "@/context/FinanceContext";
+import { exportToPDF } from "@/lib/pdf-exporter";
+import { Loader2, Download } from "lucide-react";
 
 export default function Home() {
   const { data, setData, insights, setInsights, loading, setLoading } = useFinance();
   const [dragging, setDragging] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [exporting, setExporting] = useState(false);
+
+  const handleExport = async () => {
+    setExporting(true);
+    await exportToPDF("dashboard-content", "Financial_Dashboard_Report.pdf");
+    setExporting(false);
+  };
 
   const processCsvText = useCallback(async (text: string) => {
     setLoading(true);
@@ -144,6 +153,7 @@ export default function Home() {
       )}
 
       {!data ? (
+        // ... (rest of the upload view)
         <div className="max-w-4xl mx-auto pt-20 pb-32">
            <div className="text-center">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs font-bold tracking-widest text-emerald-500 uppercase mb-8">
@@ -183,14 +193,24 @@ export default function Home() {
            </div>
         </div>
       ) : (
-        <div className="max-w-7xl mx-auto animate-slide-up">
+        <div id="dashboard-content" className="max-w-7xl mx-auto animate-slide-up p-4">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
             <div>
               <h2 className="text-3xl font-black text-white tracking-tight">Your Financial Overview</h2>
               <p className="text-slate-400 font-medium">Real-time gap detection and structural analysis.</p>
             </div>
-            <div className="bg-slate-900/50 border border-slate-800 px-4 py-2 rounded-xl text-sm font-bold text-emerald-500">
-              May 2024 Analysis
+            <div className="flex items-center gap-4">
+              <button 
+                onClick={handleExport}
+                disabled={exporting}
+                className="bg-emerald-500 hover:bg-emerald-400 disabled:opacity-50 text-slate-950 font-bold py-2.5 px-6 rounded-xl flex items-center gap-2 transition-all shadow-lg shadow-emerald-500/20 text-sm"
+              >
+                {exporting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Download size={16} />}
+                {exporting ? "Generating..." : "Export PDF"}
+              </button>
+              <div className="bg-slate-900/50 border border-slate-800 px-4 py-2.5 rounded-xl text-sm font-bold text-emerald-500">
+                May 2024 Analysis
+              </div>
             </div>
           </div>
 
