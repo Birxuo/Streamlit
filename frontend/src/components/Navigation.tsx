@@ -1,6 +1,8 @@
 "use client";
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import {
   LayoutDashboard,
   Wallet,
@@ -14,6 +16,17 @@ import {
 } from 'lucide-react';
 
 export function Sidebar() {
+  const pathname = usePathname();
+
+  const menuItems = [
+    { name: 'Dashboard', icon: LayoutDashboard, path: '/' },
+    { name: 'Accounts', icon: Wallet, path: '/accounts' },
+    { name: 'Budgeting', icon: PieChart, path: '/budgeting' },
+    { name: 'Gaps', icon: ShieldAlert, path: '/gaps', alert: '2 alerts' },
+    { name: 'Goals', icon: TrendingUp, path: '/goals' },
+    { name: 'Reports', icon: FileText, path: '/reports' },
+  ];
+
   return (
     <aside className="fixed left-0 top-0 h-screen w-64 bg-slate-950 border-r border-slate-800 p-6 hidden lg:flex flex-col z-[60]">
       <div className="flex items-center gap-3 mb-10 px-2">
@@ -24,40 +37,34 @@ export function Sidebar() {
       </div>
 
       <nav className="space-y-2 flex-1">
-        <div className="sidebar-item sidebar-item-active">
-          <LayoutDashboard className="w-5 h-5" />
-          <span>Dashboard</span>
-        </div>
-        <div className="sidebar-item">
-          <Wallet className="w-5 h-5" />
-          <span>Accounts</span>
-        </div>
-        <div className="sidebar-item">
-          <PieChart className="w-5 h-5" />
-          <span>Budgeting</span>
-        </div>
-        <div className="sidebar-item flex justify-between">
-          <div className="flex items-center gap-3">
-            <ShieldAlert className="w-5 h-5 text-red-400" />
-            <span>Gaps</span>
-          </div>
-          <span className="bg-red-500/10 text-red-500 text-[10px] px-2 py-0.5 rounded-full border border-red-500/20">2 alerts</span>
-        </div>
-        <div className="sidebar-item">
-          <TrendingUp className="w-5 h-5" />
-          <span>Goals</span>
-        </div>
-        <div className="sidebar-item">
-          <FileText className="w-5 h-5" />
-          <span>Reports</span>
-        </div>
+        {menuItems.map((item) => {
+          const isActive = pathname === item.path;
+          const Icon = item.icon;
+          return (
+            <Link
+              key={item.path}
+              href={item.path}
+              className={`sidebar-item flex justify-between items-center ${isActive ? 'sidebar-item-active' : ''}`}
+            >
+              <div className="flex items-center gap-3">
+                <Icon className={`w-5 h-5 ${item.name === 'Gaps' && !isActive ? 'text-red-400' : ''}`} />
+                <span>{item.name}</span>
+              </div>
+              {item.alert && (
+                <span className="bg-red-500/10 text-red-500 text-[10px] px-2 py-0.5 rounded-full border border-red-500/20">
+                  {item.alert}
+                </span>
+              )}
+            </Link>
+          );
+        })}
       </nav>
 
       <div className="pt-6 border-t border-slate-800">
-        <div className="sidebar-item">
+        <Link href="/settings" className={`sidebar-item ${pathname === '/settings' ? 'sidebar-item-active' : ''}`}>
           <Settings className="w-5 h-5" />
           <span>Settings</span>
-        </div>
+        </Link>
       </div>
     </aside>
   );
