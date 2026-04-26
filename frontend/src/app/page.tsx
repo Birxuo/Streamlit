@@ -15,7 +15,7 @@ export default function Home() {
   const [dragging, setDragging] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const processCsvText = async (text: string) => {
+  const processCsvText = useCallback(async (text: string) => {
     setLoading(true);
     setError(null);
     try {
@@ -94,7 +94,7 @@ export default function Home() {
       setError(e instanceof Error ? e.message : "An unexpected error occurred.");
       setLoading(false);
     }
-  };
+  }, [setData, setInsights, setLoading]);
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -124,7 +124,7 @@ export default function Home() {
     const reader = new FileReader();
     reader.onload = (ev) => processCsvText(ev.target?.result as string);
     reader.readAsText(file);
-  }, []);
+  }, [processCsvText]);
 
   return (
     <div

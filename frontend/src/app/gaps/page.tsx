@@ -86,7 +86,7 @@ export default function GapsPage() {
             Strategic Optimizations
           </h3>
           <div className="space-y-4">
-            {insights?.map((insight: any, idx) => (
+            {insights?.map((insight: Record<string, string | number>, idx: number) => (
               <InsightCard key={idx} insight={insight} />
             ))}
           </div>
