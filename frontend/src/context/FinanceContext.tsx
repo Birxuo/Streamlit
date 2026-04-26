@@ -3,7 +3,7 @@
 import React, { createContext, useContext, useState, ReactNode } from "react";
 import { Transaction, FlaggedCategory } from "@/lib/finance-utils";
 
-interface FinanceData {
+export interface FinanceData {
   income: number;
   expenses: number;
   savings: number;
@@ -16,8 +16,8 @@ interface FinanceData {
 interface FinanceContextType {
   data: FinanceData | null;
   setData: (data: FinanceData | null) => void;
-  insights: any[] | null;
-  setInsights: (insights: any[] | null) => void;
+  insights: Record<string, string | number>[] | null;
+  setInsights: (insights: Record<string, string | number>[] | null) => void;
   loading: boolean;
   setLoading: (loading: boolean) => void;
 }
@@ -26,7 +26,7 @@ const FinanceContext = createContext<FinanceContextType | undefined>(undefined);
 
 export function FinanceProvider({ children }: { children: ReactNode }) {
   const [data, setData] = useState<FinanceData | null>(null);
-  const [insights, setInsights] = useState<any[] | null>(null);
+  const [insights, setInsights] = useState<Record<string, string | number>[] | null>(null);
   const [loading, setLoading] = useState(false);
 
   return (
