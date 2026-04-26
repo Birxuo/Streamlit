@@ -32,8 +32,8 @@ export function Sidebar() {
   return (
     <aside className="fixed left-0 top-0 h-screen w-64 bg-slate-950 border-r border-slate-800 p-6 hidden lg:flex flex-col z-[60]">
       <div className="flex items-center gap-3 mb-10 px-2">
-        <div className="bg-emerald-500 text-white p-2 rounded-xl shadow-lg shadow-emerald-500/20">
-          <ShieldAlert className="w-6 h-6" />
+        <div className="relative w-10 h-10 overflow-hidden rounded-xl bg-slate-900 border border-slate-800 p-1.5 shadow-lg">
+          <Image src="/logo.png" alt="Streamlit Logo" width={40} height={40} className="object-contain" />
         </div>
         <span className="font-extrabold text-xl tracking-tight text-white">Streamlit</span>
       </div>

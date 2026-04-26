@@ -19,6 +19,10 @@ export const metadata: Metadata = {
   description:
     "Upload your bank statement and uncover hidden financial leaks with institutional-grade AI analysis. Privacy-first, local-first.",
   keywords: ["finance", "budgeting", "AI", "spending analysis", "Streamlit"],
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
