@@ -1,0 +1,9 @@
+streamlit==1.42.0
+pandas==2.2.3
+plotly==6.0.0
+openai
+python-dotenv==1.0.1
+fastapi==0.115.12
+uvicorn[standard]==0.34.2
+numpy==2.2.5
+python-multipart==0.0.20
