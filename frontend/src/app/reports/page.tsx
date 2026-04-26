@@ -69,8 +69,31 @@ export default function ReportsPage() {
                  <span className="px-2 py-1 bg-emerald-500/10 text-[10px] font-bold text-emerald-500 rounded border border-emerald-500/20">Quarterly</span>
               </div>
             </div>
-            <div className="h-64">
+            <div className="h-64 mb-8">
               <MonthlyTrend transactions={data.allTransactions} />
+            </div>
+
+            <div className="pt-8 border-t border-slate-800">
+              <h4 className="text-sm font-bold text-slate-500 uppercase tracking-widest mb-6">Comparative Performance Analytics</h4>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                 {[
+                   { label: "Net Savings", value: `$${data.savings.toLocaleString()}`, trend: "+12%", status: "success" },
+                   { label: "Burn Rate", value: `${((data.expenses / data.income) * 100).toFixed(1)}%`, trend: "-2.4%", status: "success" },
+                   { label: "Gap Frequency", value: data.flagged.length.toString(), trend: "stable", status: "neutral" }
+                 ].map((stat, i) => (
+                   <div key={i} className="p-4 bg-slate-900/30 rounded-2xl border border-slate-800/50">
+                      <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">{stat.label}</p>
+                      <div className="flex items-end justify-between">
+                         <p className="text-xl font-black text-white">{stat.value}</p>
+                         <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${
+                           stat.status === 'success' ? 'bg-emerald-500/10 text-emerald-500' : 'bg-slate-800 text-slate-500'
+                         }`}>
+                           {stat.trend}
+                         </span>
+                      </div>
+                   </div>
+                 ))}
+              </div>
             </div>
           </div>
 
